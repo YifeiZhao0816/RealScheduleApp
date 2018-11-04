@@ -1,0 +1,1 @@
+C:\Users\zhaoy\source\repos\ScheduleAppCodingClub\RealScheduleApp\ScheduleAppCodingClub\ScheduleAppCodingClub.csproj;arm

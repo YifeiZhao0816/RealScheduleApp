@@ -25,6 +25,8 @@ namespace ScheduleAppCodingClub
         public MainPage()
         {
             this.InitializeComponent();
+            TextBlock1.Text = "HelloWorld";
+            TextBlock1.Text += "\n HelloWorld";
         }
     }
 }

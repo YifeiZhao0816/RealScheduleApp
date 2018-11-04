@@ -23,6 +23,7 @@ namespace ScheduleAppCodingClub.Class
             return dateTime.ToString(culture);
         }
 
+        // method overload
         private static string ConvertDateToString(TimeSpan dateTime)
         {
             CultureInfo culture = new CultureInfo("en-US");
@@ -41,25 +42,26 @@ namespace ScheduleAppCodingClub.Class
             return TimeSpan.Parse(str, culture);
         }
 
-        // save the current date to the localSettings
+        // save the current date to the localSettings (save to local computer)
         public static void SaveDate()
         {
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             localSettings.Values["Date"] = ConvertDateToString(DateTime.Now);
         }
 
-        // Save a boolean with the saving name 
+        // Save a boolean value with the gaving name 
         public static void SaveData(bool value, string name)
         {
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             localSettings.Values[name] = value;
         }
 
-        // load the date last time the program saved, if there's not any, return today's date.
+        // load the date saved by the program last time, if there's none, return today's date.
         public static DateTime LoadDate()
         {
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             CultureInfo culture = new CultureInfo("en-US");
+
             if (localSettings.Values["Date"] != null)
             {
                 string temp = (string)localSettings.Values["Date"];
@@ -69,10 +71,11 @@ namespace ScheduleAppCodingClub.Class
                 return DateTime.Today;
         }
 
-        // load specific data from localSettings called name.
+        // load specific data from localSettings.
         public static bool LoadData(string name)
         {
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+
             if (localSettings.Values[name] != null)
             {
                 bool value = (bool)localSettings.Values[name];
@@ -82,6 +85,7 @@ namespace ScheduleAppCodingClub.Class
                 return false;
         }
 
+        // Save the schedule to local computer so it can be loaded next time the program starts
         public static void StoreSchedule(List<Subject> schedule)
         {
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
@@ -100,21 +104,25 @@ namespace ScheduleAppCodingClub.Class
             }
         }
 
+        // Load the schedule. If there's no schedule stored, return a empty list.
         public static List<Subject> LoadSchedule()
         {
             Windows.Storage.ApplicationDataContainer localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
             Windows.Storage.ApplicationDataCompositeValue composite = new Windows.Storage.ApplicationDataCompositeValue();
             List<Subject> result = new List<Subject>();
-            int total = (int)localSettings.Values["Total"];
-            for (int i = 0; i < total; i++)
+            if (localSettings.Values["Total"] != null)
             {
-                composite = (Windows.Storage.ApplicationDataCompositeValue)localSettings.Values[nameSets[i]];
-                result.Add(new Subject((int)composite["Block"], 
-                                       (string)composite["SubjectName"],
-                                       ConvertStringToTime((string)composite["BeginTime"]),
-                                       ConvertStringToTime((string)composite["EndTime"]),
-                                       ConvertStringToTime((string)composite["PeriodLength"])
-                                       ));
+                int total = (int)localSettings.Values["Total"];
+                for (int i = 0; i < total; i++)
+                {
+                    composite = (Windows.Storage.ApplicationDataCompositeValue)localSettings.Values[nameSets[i]];
+                    result.Add(new Subject((int)composite["Block"],
+                                           (string)composite["SubjectName"],
+                                           ConvertStringToTime((string)composite["BeginTime"]),
+                                           ConvertStringToTime((string)composite["EndTime"]),
+                                           ConvertStringToTime((string)composite["PeriodLength"])
+                                           ));
+                }
             }
             return result;
         }

@@ -27506,11 +27506,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zhaoy\\source\\repos\\ScheduleAppCodingClub\\ScheduleAppCodingClub\\ScheduleAppCodingClub.csproj",
+      "projectUniqueName": "C:\\Users\\zhaoy\\source\\repos\\ScheduleAppCodingClub\\RealScheduleApp\\ScheduleAppCodingClub\\ScheduleAppCodingClub.csproj",
       "projectName": "ScheduleAppCodingClub",
-      "projectPath": "C:\\Users\\zhaoy\\source\\repos\\ScheduleAppCodingClub\\ScheduleAppCodingClub\\ScheduleAppCodingClub.csproj",
+      "projectPath": "C:\\Users\\zhaoy\\source\\repos\\ScheduleAppCodingClub\\RealScheduleApp\\ScheduleAppCodingClub\\ScheduleAppCodingClub.csproj",
       "packagesPath": "C:\\Users\\zhaoy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\zhaoy\\source\\repos\\ScheduleAppCodingClub\\ScheduleAppCodingClub\\obj\\",
+      "outputPath": "C:\\Users\\zhaoy\\source\\repos\\ScheduleAppCodingClub\\RealScheduleApp\\ScheduleAppCodingClub\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [

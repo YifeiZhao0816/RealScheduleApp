@@ -14,6 +14,7 @@ namespace ScheduleAppCodingClub.Class
         public TimeSpan EndTime { get; set; }
         public TimeSpan PeriodLength { get; set; }
 
+        // constructor
         public Subject(int block, string subjectName, TimeSpan beginTime, TimeSpan endTime, TimeSpan periodLength)
         {
             Block = block;
@@ -23,6 +24,7 @@ namespace ScheduleAppCodingClub.Class
             PeriodLength = periodLength;
         }
 
+        // return true if it is a Aday block. false if it is on B day.
         public bool isA()
         {
             return Block % 2 == 0;
